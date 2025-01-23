@@ -99,18 +99,52 @@
 # print(resultado)
 
 
-def merge_sort(lista):
-    meio = int(len(lista)/2)
-    esquerda = lista[:meio]
-    direita = lista[meio:]
+# def merge_sort(lista):
+#     meio = int(len(lista)/2)
+#     esquerda = lista[:meio]
+#     direita = lista[meio:]
 
-    if lista<1:
-        return sorted(lista)
-    else:
-        esquerda = lista[:meio]
-        direita = lista[meio:]
-        merge_sort(lista)
+#     if lista<1:
+#         return sorted(lista)
+#     else:
+#         esquerda = lista[:meio]
+#         direita = lista[meio:]
+#         merge_sort(lista)
 
-lista = [100,20,300,30,60,80]
-resultado = merge_sort(lista)
-print(resultado)
+# lista = [100,20,300,30,60,80]
+# resultado = merge_sort(lista)
+# print(resultado)
+
+# def bubble_sort(lista):
+#     for n in range(len(lista) - 1, 0, -1):
+#         trocado = False
+#         for i in range(n):
+#             if lista[i] > lista[i + 1]:
+#                 lista[i], lista[i + 1] = lista[i + 1], lista[i]
+#                 trocado = True
+#         if not trocado:
+#             break
+
+# lista = [1,10,23,515,76587,546,12,3,7,856,2345]
+# print(f"Lista não ordenada: {lista}")
+# bubble_sort(lista)
+# print(f"Lista ordenada: {lista}")
+
+def insertion_sort(lista):
+    n = len(lista)
+      
+    if n <= 1:
+        return
+ 
+    for i in range(1, n):
+        chave = lista[i]
+        a = i - 1
+        while a >= 0 and chave < lista[a]:
+            lista[a + 1] = lista[a]
+            a -= 1
+        lista[a + 1] = chave
+  
+lista = [1432, 12341, 112333, 5, 6]
+insertion_sort(lista)
+print(lista)
+
