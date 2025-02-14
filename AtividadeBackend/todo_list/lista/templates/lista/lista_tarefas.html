@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Tarefas</title>
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <ul>
+        {% for tarefa in tarefas %}
+        <li>
+            <h3>{{ tarefa.descricao }}</h3>
+            <p>Status: {% if tarefa.concluida %}fez sim :D{% else %}fez não :c{% endif %}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

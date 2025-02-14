@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Produtos Disponíveis</h1>
+
+    <div class="produtos-container">
+        {% for produto in produtos %}
+            <div class="produto-card">
+                <h2>{{ produto.nome }}</h2>
+                <p><strong>Descrição:</strong> {{ produto.descricao }}</p>
+                <p><strong>Preço:</strong> R$ {{ produto.preco }}</p>
+                <p><strong>Data de Criação:</strong> {{ produto.data_criacao }}</p>
+
+                {% if produto.imagem %}
+                    <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" class="produto-imagem">
+                {% else %}
+                    <p>Sem imagem</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
