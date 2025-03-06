@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lista de Livros</h1>
+    <a href="{% url 'novo_livro' %}">Adicionar Novo Livro</a>
+    <ul>
+        {% for livro in livros %}
+            <li>
+                {{ livro.titulo }} - {{ livro.autor }} ({{ livro.ano_publicacao }})
+                <a href="{% url 'editar_livro' livro.id %}">Editar</a>
+                <a href="{% url 'excluir_livro' livro.id %}">Excluir</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
