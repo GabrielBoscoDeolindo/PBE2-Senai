@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deletar item</title>
+</head>
+<body>
+    <h1>Voce tem certeza que deseja excluir permanentemente o item {{ item.nome }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sim, quero fazer essa loucura</button>
+    </form>
+</body>
+</html>
