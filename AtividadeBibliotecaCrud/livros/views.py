@@ -4,9 +4,9 @@ from .forms import LivroForm
 
 
 def lista_livros(request):
-    query = request.GET.get('q')  
+    query = request.GET.get('busca')  
     if query:
-        livros = Livro.objects.filter(titulo__icontains=query) 
+        livros = Livro.objects.filter(titulo__istartswith=query) 
     else:
         livros = Livro.objects.all()
     
