@@ -9,7 +9,7 @@
         <h1>Tem certeza que deseja excluir "{{ livro.titulo }}"?</h1>
         <form method="post">
             {% csrf_token %}
-            <button type="submit">Sim, excluir</button>
+            <button type="submit">Excluir</button>
         </form>
         <a href="{% url 'lista_livros' %}">Cancelar</a>
     </body>

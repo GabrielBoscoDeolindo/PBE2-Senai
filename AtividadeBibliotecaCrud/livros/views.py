@@ -4,8 +4,13 @@ from .forms import LivroForm
 
 
 def lista_livros(request):
-    livros = Livro.objects.all()
-    return render(request, 'livros/lista_livros.html', {'livros': livros})
+    query = request.GET.get('q')  
+    if query:
+        livros = Livro.objects.filter(titulo__icontains=query) 
+    else:
+        livros = Livro.objects.all()
+    
+    return render(request, 'livros/lista_livros.html', {'livros': livros, 'query': query})
 
 
 def novo_livro(request):

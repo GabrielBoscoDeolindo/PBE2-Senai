@@ -7,7 +7,13 @@
 </head>
 <body>
     <h1>Lista de Livros</h1>
+    <form method="GET">
+        <input type="text" name="q" placeholder="aaaaa" value="{{ query|default:'' }}">
+        <button type="submit">Buscar</button>
+    </form>
+
     <a href="{% url 'novo_livro' %}">Adicionar Novo Livro</a>
+    
     <ul>
         {% for livro in livros %}
             <li>
@@ -15,6 +21,8 @@
                 <a href="{% url 'editar_livro' livro.id %}">Editar</a>
                 <a href="{% url 'excluir_livro' livro.id %}">Excluir</a>
             </li>
+        {% empty %}
+            <p>Nenhum livro encontrado.</p>
         {% endfor %}
     </ul>
 </body>
