@@ -20,3 +20,44 @@ def criar_aluno(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET'])
+def detalhe_aluno(request, pk):
+    try:
+        aluno = Aluno.objects.get(pk=pk)
+    except Aluno.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    serializer = AlunoSerializer(aluno)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(["PUT"])
+def alterar_aluno(request, pk):
+    try:
+        aluno = Aluno.objects.get(pk=pk)
+        
+    except Aluno.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    serializer = AlunoSerializer(aluno, data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_205_RESET_CONTENT)
+    return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(["DELETE"])
+def deletar_informacoes(request, pk):
+    try:
+        aluno = Aluno.objects.get(pk=pk)
+    except Aluno.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    aluno.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(["GET"])
+def macharete(request, texto):
+    import pyfiglet
+    gabriel = pyfiglet.figlet_format(texto)
+
+    return Response(gabriel, status=status.HTTP_200_OK)
