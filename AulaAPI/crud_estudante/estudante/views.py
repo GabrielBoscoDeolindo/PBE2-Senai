@@ -34,7 +34,6 @@ def detalhe_aluno(request, pk):
 def alterar_aluno(request, pk):
     try:
         aluno = Aluno.objects.get(pk=pk)
-        
     except Aluno.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     
